@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Registration</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-image: url('https://example.com/background-image.jpg'); /* Replace with your background image */
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            color: #fff;
+            background-color: #121212;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 20px;
+            max-width: 1200px;
+            width: 100%;
+            padding: 20px;
+            margin: auto;
+        }
+
+        .price-list, .performance-info {
+            background: linear-gradient(145deg, #212121, #181818);
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.4), -10px -10px 20px rgba(50, 50, 50, 0.5);
+            text-align: center;
+            color: #e0e0e0;
+        }
+
+        .registration-form {
+            background: linear-gradient(145deg, #212121, #181818);
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.4), -10px -10px 20px rgba(50, 50, 50, 0.5);
+            text-align: center;
+            color: #e0e0e0;
+        }
+
+        .price-list h2, .performance-info h2, .registration-form h2 {
+            margin-bottom: 15px;
+            font-size: 24px;
+            color: #f1f1f1;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: -webkit-linear-gradient(#ff8c00, #e52e71);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .price-list ul, .performance-info ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .price-list li, .performance-info li {
+            background-color: #282828;
+            margin: 10px 0;
+            padding: 12px;
+            border-radius: 8px;
+            box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.3), inset -5px -5px 10px rgba(50, 50, 50, 0.5);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #f1f1f1;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            background: #282828;
+            color: #fff;
+            box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.3), inset -5px -5px 10px rgba(50, 50, 50, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .form-group select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background: #333 url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"%3E%3Cpath d="M4.293 5.293a1 1 0 0 1 1.414 0L8 6.586l2.293-1.293a1 1 0 0 1 1.414 1.414l-3 3a1 1 0 0 1-1.414 0l-3-3a1 1 0 0 1 0-1.414z" fill="%23fff"/%3E%3C/svg%3E') no-repeat right 10px center;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            box-shadow: 0 0 5px rgba(255, 165, 0, 0.8);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #ff4081;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(50, 50, 50, 0.4);
+        }
+
+        .submit-btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+            opacity: 0;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            z-index: -1;
+        }
+
+        .submit-btn:hover {
+            background-color: #e91e63;
+        }
+
+        .submit-btn:hover:before {
+            opacity: 1;
+        }
+
+        .submit-btn:active {
+            box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.5), inset -2px -2px 5px rgba(50, 50, 50, 0.5);
+        }
+
+        .qr-code {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .qr-code img {
+            max-width: 150px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(50, 50, 50, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="price-list">
+            <h2>Price List</h2>
+            <ul>
+                <li>VIP: $200</li>
+                <li>Regular: $100</li>
+                <li>Economy: $50</li>
+            </ul>
+            <div class="qr-code">
+                <h2>More information</h2>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/QR_code_for_mobile_English_Wikipedia.svg" alt="QR Code">
+            </div>
+            <div class="drink-selection">
+                <h2>Drink Prices</h2>
+                <ul>
+                    <li>Water - $0</li>
+                    <li>Soda - $2</li>
+                    <li>Juice - $3</li>
+                    <li>Coffee - $4</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="registration-form">
+            <h2>Ticket Registration</h2>
+            <form id="registrationForm" action="https://www.youtube.com/watch?v=dQw4w9WgXcQ" method="post">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="ticket-type">Ticket Type</label>
+                    <select id="ticket-type" name="ticket-type" required>
+                        <option></option required>
+                        <option value="vip" data-price="200">VIP - $200</option required>
+                        <option value="regular" data-price="100">Regular - $100</option required>
+                        <option value="economy" data-price="50">Economy - $50</option required>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="ticket">Number of Tickets</label required>
+                    <input type="number" id="ticket" name="ticket" min="0" value="0" required>
+                    
+                </div>
+                <div class="form-group">
+                    <label for="drink">Select Drink</label>
+                    <select id="drink" name="drink" required>
+                        <option></option>
+                        <option value="water" data-price="0">Water - $0</option>
+                        <option value="soda" data-price="2">Soda - $2</option>
+                        <option value="juice" data-price="3">Juice - $3</option>
+                        <option value="coffee" data-price="4">Coffee - $4</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="drink-quantity">Quantity of Drink</label>
+                    <input type="number" id="drink-quantity" name="drink-quantity" min="0" value="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="total">Total Amount (incl. 8% tax)</label>
+                    <input type="text" id="total" name="total" readonly>
+                </div>
+                <button type="submit" class="submit-btn">Register Now</button>
+            </form>
+        </div>
+
+        <div class="performance-info">
+            <h2>Performance Information</h2>
+            <ul>
+                <li><strong>Artist:</strong> The Amazing Band</li>
+                <li><strong>Date:</strong> October 15, 2024</li>
+                <li><strong>Time:</strong> 7:00 PM</li>
+                <li><strong>Venue:</strong> Grand Concert Hall</li>
+                <li><strong>Description:</strong> Join us for an unforgettable evening of music with The Amazing Band! Enjoy live performances of their greatest hits and experience the magic of their music.</li>
+            </ul>
+            <div class="qr-code">
+                <h2>Payment QR Code</h2>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/QR_code_for_mobile_English_Wikipedia.svg" alt="QR Code">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const ticketInput = document.getElementById('ticket');
+            const drinkSelect = document.getElementById('drink');
+            const drinkQuantity = document.getElementById('drink-quantity');
+            const totalInput = document.getElementById('total');
+            const ticketTypeSelect = document.getElementById('ticket-type');
+
+            function calculateTotal() {
+                const ticketCount = parseInt(ticketInput.value);
+                const ticketPrice = parseFloat(ticketTypeSelect.options[ticketTypeSelect.selectedIndex].dataset.price);
+                const drinkPrice = parseFloat(drinkSelect.options[drinkSelect.selectedIndex].dataset.price);
+                const quantity = parseInt(drinkQuantity.value);
+                const subtotal = (ticketPrice * ticketCount) + (drinkPrice * quantity);
+                const tax = subtotal * 0.08;
+                const total = subtotal + tax;
+                totalInput.value = `$${total.toFixed(2)}`;
+            }
+
+            ticketInput.addEventListener('input', calculateTotal);
+            drinkSelect.addEventListener('change', calculateTotal);
+            drinkQuantity.addEventListener('input', calculateTotal);
+            ticketTypeSelect.addEventListener('change', calculateTotal);
+
+            // Initial calculation
+            calculateTotal();
+        });
+
+    </script>
+
+</body>
+</html>
